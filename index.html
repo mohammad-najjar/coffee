@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brew House | Specialty Coffee (Demo Website)</title>
+  <meta name="description" content="Brew House is a fictional specialty coffee shop, built as a front-end portfolio project with HTML, CSS and vanilla JavaScript.">
+  <meta name="theme-color" content="#3A241B">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233A241B'/%3E%3Cellipse cx='16' cy='16' rx='6' ry='9' fill='%23C58B52' transform='rotate(35 16 16)'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Figtree:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== Navigation ===== -->
+  <header class="site-header" id="site-header">
+    <div class="container header__inner">
+      <a class="logo" href="#home" aria-label="Brew House, back to top">
+        <span class="bean" aria-hidden="true"></span>
+        <span class="logo__text">Brew House</span>
+      </a>
+
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#home">Home</a></li>
+          <li><a class="nav__link" href="#menu">Menu</a></li>
+          <li><a class="nav__link" href="#story">Our Story</a></li>
+          <li><a class="nav__link" href="#visit">Visit Us</a></li>
+          <li class="nav__cta-mobile"><a class="btn btn--primary" href="#menu">Order Coffee</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--primary btn--small header__order" href="#menu">Order Coffee</a>
+        <button class="icon-btn cart-toggle" id="cart-open" type="button" aria-haspopup="dialog" aria-controls="cart-drawer">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 11H7L6 8z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg>
+          <span class="sr-only">Open order, <span id="cart-count-sr">0 items</span></span>
+          <span class="cart-badge" id="cart-count" hidden>0</span>
+        </button>
+        <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+          <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero__media img-frame" data-fallback="Brew House">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=1600&amp;q=70"
+             srcset="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=800&amp;q=70 800w,
+                     https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=1600&amp;q=70 1600w"
+             sizes="100vw" width="1600" height="1067" alt="A cup of freshly brewed coffee on a table" fetchpriority="high" decoding="async">
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__label"><span class="hero__dot" aria-hidden="true"></span>Specialty coffee bar, open 7 days a week</p>
+          <h1 class="hero__title" id="hero-title">Your Daily Ritual, Reimagined.</h1>
+          <p class="hero__text">Thoughtfully sourced beans. Expertly crafted coffee. A little moment of extraordinary in every cup.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#menu">Explore Our Menu</a>
+            <a class="btn btn--outline-light" href="#story">Discover Our Story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Featured Menu ===== -->
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="menu-head">
+          <div class="section-head">
+            <h2 id="menu-title">Made by hand, one cup at a time</h2>
+            <p class="lead">Six house favorites. Add what you like to your demo order and review it any time.</p>
+          </div>
+          <div class="filters" role="group" aria-label="Filter menu by type">
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter" type="button" data-filter="hot" aria-pressed="false">Hot Coffee</button>
+            <button class="filter" type="button" data-filter="iced" aria-pressed="false">Iced Coffee</button>
+          </div>
+        </div>
+        <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
+        <div class="menu-grid" id="menu-grid">
+          <noscript><p class="notice">The menu is loaded with JavaScript. Please enable it to browse and order.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Brand Story ===== -->
+    <section class="section section--tint" id="story" aria-labelledby="story-title">
+      <div class="container story">
+        <div class="story__media">
+          <div class="story__img story__img--main img-frame" data-fallback="Our beans">
+            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&amp;fit=crop&amp;w=900&amp;q=70" width="900" height="1125" loading="lazy" decoding="async" alt="Freshly roasted coffee beans">
+          </div>
+          <div class="story__img story__img--small img-frame" data-fallback="Our baristas">
+            <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&amp;fit=crop&amp;w=600&amp;q=70" width="600" height="600" loading="lazy" decoding="async" alt="A barista preparing coffee at the counter">
+          </div>
+        </div>
+        <div class="story__text">
+          <h2 id="story-title">Good Coffee. Good People. Good Moments.</h2>
+          <p>Brew House began with a simple belief: a neighborhood coffee spot should feel like somewhere you are glad to be. We buy small lots of beans from growers we can name, and we roast in modest batches so every bag tastes fresh and clear.</p>
+          <p>Our baristas train for weeks before they ever serve a guest. They taste, adjust, and taste again, because a great cup is built on small details. The result is coffee with sweetness and balance, served at a counter where someone remembers how you take it.</p>
+          <a class="btn btn--dark" href="#visit">Plan a visit</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Why Choose Us ===== -->
+    <section class="section" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <h2 id="why-title">Why guests keep coming back</h2>
+        </div>
+        <ul class="benefits">
+          <li class="benefit">
+            <span class="benefit__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19l8-8"/></svg>
+            </span>
+            <h3>Carefully Sourced Beans</h3>
+            <p>Small-lot coffees from farms we know, bought at fair prices and roasted in small batches for clarity and sweetness.</p>
+          </li>
+          <li class="benefit">
+            <span class="benefit__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3v3M12 3v3"/></svg>
+            </span>
+            <h3>Crafted by Skilled Baristas</h3>
+            <p>Every shot is dialed in by hand each morning, and every drink is made to order with care.</p>
+          </li>
+          <li class="benefit">
+            <span class="benefit__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <h3>A Space to Slow Down</h3>
+            <p>Comfortable seating, warm light, and no rush. Stay for a conversation, a book, or a quiet moment.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="section section--dark" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="testimonials-title">Kind words from the neighborhood</h2>
+          <p class="lead">These are sample testimonials written for this demo. They are not real customer reviews.</p>
+        </div>
+        <div class="quotes">
+          <figure class="quote">
+            <blockquote><p>I came in for a quick espresso and stayed for an hour. By my second visit the team already knew my order.</p></blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">MR</span><span><strong>Maya R.</strong><br>Sample guest</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p>The Spanish Latte is my Friday ritual. Rich and creamy without being too sweet.</p></blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">DK</span><span><strong>Daniel K.</strong><br>Sample guest</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p>A calm place where I can actually get work done, and the flat white is excellent.</p></blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">PS</span><span><strong>Priya S.</strong><br>Sample guest</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Visit Us ===== -->
+    <section class="section" id="visit" aria-labelledby="visit-title">
+      <div class="container visit">
+        <div class="visit__info">
+          <h2 id="visit-title">Come say hello</h2>
+          <p class="lead">Brew House is a fictional shop, so the details below are sample information for this demo.</p>
+          <dl class="details">
+            <div>
+              <dt>Address (sample)</dt>
+              <dd>123 Sample Street<br>Demo City, DC 00000</dd>
+            </div>
+            <div>
+              <dt>Opening hours (sample)</dt>
+              <dd>Monday to Friday: 7:00 am to 6:00 pm<br>Saturday and Sunday: 8:00 am to 5:00 pm</dd>
+            </div>
+            <div>
+              <dt>Phone (demo number)</dt>
+              <dd>(555) 010-0199</dd>
+            </div>
+          </dl>
+          <div class="visit__actions">
+            <a class="btn btn--dark" id="directions-link" href="https://www.openstreetmap.org/" target="_blank" rel="noopener noreferrer">Get Directions<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="btn btn--outline-dark" href="mailto:hello@example.com?subject=Hello%20Brew%20House">Contact Us</a>
+          </div>
+        </div>
+        <div class="visit__media img-frame" data-fallback="Brew House">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;w=900&amp;q=70" width="900" height="1000" loading="lazy" decoding="async" alt="A warm, inviting coffee shop interior">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Newsletter ===== -->
+    <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+      <div class="container newsletter__inner">
+        <div>
+          <h2 id="newsletter-title">Get new menu news first</h2>
+          <p>Seasonal drinks and new beans, once a month. This is a demo form, so nothing is actually sent.</p>
+        </div>
+        <form class="newsletter__form" id="newsletter-form" novalidate>
+          <label class="sr-only" for="newsletter-email">Email address</label>
+          <div class="newsletter__row">
+            <input class="input" id="newsletter-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" aria-describedby="newsletter-msg">
+            <button class="btn btn--dark" type="submit">Subscribe</button>
+          </div>
+          <p class="form-msg" id="newsletter-msg" role="status" aria-live="polite" hidden></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="logo" href="#home" aria-label="Brew House, back to top">
+          <span class="bean" aria-hidden="true"></span>
+          <span class="logo__text">Brew House</span>
+        </a>
+        <p>Slow down. Sip well. Start again tomorrow.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="footer__links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#visit">Visit Us</a></li>
+        </ul>
+      </nav>
+      <ul class="footer__links footer__social" aria-label="Social media (placeholder links)">
+        <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer">Pinterest<span class="sr-only"> (opens in a new tab)</span></a></li>
+      </ul>
+    </div>
+    <div class="container footer__legal">
+      <p>&copy; <span id="year">2026</span> Brew House. A fictional brand created for a portfolio demo. Social links are placeholders.</p>
+    </div>
+  </footer>
+
+  <!-- ===== Cart drawer ===== -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" inert>
+    <div class="drawer__head">
+      <h2 id="cart-title">Your order</h2>
+      <button class="icon-btn" id="cart-close" type="button" aria-label="Close order">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body">
+      <p class="cart-empty" id="cart-empty">Your order is empty. Add a drink from the menu to get started.</p>
+      <ul class="cart-list" id="cart-list"></ul>
+    </div>
+    <div class="drawer__foot">
+      <div class="cart-total"><span>Total</span><strong id="cart-total">$0.00</strong></div>
+      <p class="demo-note">Demo only. Orders are not sent anywhere and no payment is taken.</p>
+      <div class="drawer__actions">
+        <button class="btn btn--outline-dark btn--small" id="cart-clear" type="button">Clear order</button>
+        <button class="btn btn--dark btn--small" id="cart-continue" type="button">Keep browsing</button>
+      </div>
+    </div>
+  </aside>
+
+  <p class="sr-only" id="live" role="status" aria-live="polite"></p>
+</body>
+</html>
